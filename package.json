@@ -1,0 +1,35 @@
+{
+  "name": "youtubedownloader",
+  "version": "1.0.0",
+  "description": "Baixar videos e audios do youtube",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "keywords": [],
+  "author": "Matheusky",
+  "license": "MIT",
+  "build": {
+    "appId": "Classroom Manager",
+    "asar": "false",
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "src/img/ytdl.png"
+    },
+    "nsis": {
+      "license": "LICENSE",
+      "oneClick": "false",
+      "allowToChangeInstallationDirectory": "true"
+    }
+  },
+  "devDependencies": {
+    "electron": "^17.0.1",
+    "electron-builder": "^22.14.13"
+  },
+  "dependencies": {
+    "ytdl-core": "^4.10.1"
+  }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../style/global.css">
+    <link rel="stylesheet" href="../style/index.css">
+    <script src="../scripts/script.js"></script>
+    <title>Youtube Download</title>
+</head>
+
+<body>
+
+    <div class="topnav" id="myTopnav">
+        <a class="navbar-brand"><img src="../img/ytdl.png" class="dlogo" alt="logo"> Youtube Download</a>
+    </div>
+
+    <div class="container" id="inputlink">
+        <h2>Youtube Download</h2>
+        <p>
+            Para baixar um audio/video do youtube, basta digitar o link do vídeo no campo abaixo, selecionar o tipo e
+            clicar no botão "Baixar".
+        </p>
+        <div class="tb-input">
+            <label for="link">Link do vídeo:</label>
+            <input type="text" id="link" name="link" placeholder="Link do vídeo">
+            <select name="typedl" id="typedl">
+                <option value="ad">MP3</option>
+                <option value="vd">Video</option>
+            </select>
+            <br>
+            <br>
+            <button class="btn btn-primary" onclick="dlq()">Baixar</button>
+        </div>
+    </div>
+
+    <div id="loading" style="display: none;">
+        <div class="lds-dual-ring">Carregando...</div>
+    </div>
+
+    <div class="container" id="dl" style="display: none;">
+        <!-- music details -->
+        <div class="music-details">
+            <div class="music-thumb">
+                <img id="dlthumb" alt="">
+            </div>
+            <div class="music-info">
+                <p id="filetypedl"></p>
+                <p>Nome: <span id="dltitle"></span></p>
+                <p>Canal: <span id="dlchannel"></span></p>
+                <p>Tempo: <span id="dltime"></span></p>
+            </div>
+            <div class="downloadGen" id="downloadGen">
+                <p>Download</p>
+                <a id="down" onclick="dl()" style="font-size: 56px;">
+                    <i class="fa fa-download"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
