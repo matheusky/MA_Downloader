@@ -1,2 +1,2 @@
 # MA_Downloader
-Download music and videos from Youtube
+Download videos or just audio from youtube using Electron
