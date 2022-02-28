@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../style/global.css">
-    <link rel="stylesheet" href="../style/index.css">
     <script src="../scripts/script.js"></script>
     <title>Youtube Download</title>
 </head>
@@ -21,19 +20,14 @@
     <div class="container" id="inputlink">
         <h2>Youtube Download</h2>
         <p>
-            Para baixar um audio/video do youtube, basta digitar o link do vídeo no campo abaixo, selecionar o tipo e
-            clicar no botão "Baixar".
+            Download Video/Audio from Youtube and save it to your computer.
         </p>
         <div class="tb-input">
-            <label for="link">Link do vídeo:</label>
-            <input type="text" id="link" name="link" placeholder="Link do vídeo">
-            <select name="typedl" id="typedl">
-                <option value="ad">MP3</option>
-                <option value="vd">Video</option>
-            </select>
+            <label for="link">Youtube Link:</label>
+            <input type="text" id="link" name="link" placeholder="https://www.youtube.com/watch?v=SaDWMN7HLZo">
             <br>
             <br>
-            <button class="btn btn-primary" onclick="dlq()">Baixar</button>
+            <button class="btn btn-primary" onclick="getVDinf()">Carregar</button>
         </div>
     </div>
 
@@ -41,8 +35,8 @@
         <div class="lds-dual-ring">Carregando...</div>
     </div>
 
-    <div class="container" id="dl" style="display: none;">
-        <!-- music details -->
+    <div class="container" id="dldt" style="display: none;">
+        <!-- video details -->
         <div class="music-details">
             <div class="music-thumb">
                 <img id="dlthumb" alt="">
@@ -52,16 +46,35 @@
                 <p>Nome: <span id="dltitle"></span></p>
                 <p>Canal: <span id="dlchannel"></span></p>
                 <p>Tempo: <span id="dltime"></span></p>
+                <br>
+                <label for="typedl">Tipo:</label>
+                <select name="typedl" id="typedl" onchange="quality()">
+                    <option value="ad">MP3</option>
+                    <option value="vd">Video</option>
+                </select>
+                <select name="quality" id="quality" style="display: none;">
+                </select>
+                <button class="btn btn-primary" onclick="configDL()" style="display: block; margin: 0 auto;">Download <i class="fa fa-download"></i></button>
             </div>
-            <div class="downloadGen" id="downloadGen">
-                <p>Download</p>
-                <a id="down" onclick="dl()" style="font-size: 56px;">
-                    <i class="fa fa-download"></i>
-                </a>
-            </div>
+            
         </div>
+        <br>
+        <div class="DLprogress" id="DLprogress">
+            <p>Download</p>
+            <p id="dltotal"></p>
+            <p id="dltimeleft"></p>
+            <p id="dlspeed"></p>
+            <div class="progress-bar" id="progress-bar">
+                <div class="progress-bar-fill" id="progress-bar-fill"><span id="progressnum"></span></div>
+            </div>
+    
+            <button onclick="openFolder()">Abrir Downloads</button>
+            <button onclick="reload()">Recomeçar</button>
+        </div>
+        <br>
     </div>
-
+    <br>
+    
 
 </body>
 

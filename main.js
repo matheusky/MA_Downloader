@@ -7,10 +7,10 @@ let mainWindow;
 app.on('ready', () => {
   // create main browser window
   mainWindow = new BrowserWindow({
-    width: 1250,
-    height: 700,
-    minWidth: 1050,
-    minHeight: 650,
+    width: 800,
+    height: 600,
+    minWidth: 800,
+    minHeight: 600,
     icon:path.join(__dirname, 'src/img/ytdl.png'),
     autoHideMenuBar: 'true',
     center: 'true',
