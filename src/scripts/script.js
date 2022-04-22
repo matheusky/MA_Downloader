@@ -1,6 +1,12 @@
 const fs = require("fs");
 const ytdl = require("ytdl-core");
 const path = require("path");
+const homedir = require("os").homedir();
+
+// create folder "MADownloads" for save token if not exists
+if (!fs.existsSync(path.join(homedir, "Documents", "MADownloads"))) {
+  fs.mkdirSync(path.join(homedir, "Documents", "MADownloads"));
+}
 
 var info;
 let starttime;
@@ -65,9 +71,10 @@ async function configDL() {
 
     video.pipe(
       fs.createWriteStream(
-        path.resolve(
-          __dirname,
-          "../audio/",
+        path.join(
+          homedir,
+          "Documents",
+          "MADownloads",
           info.videoDetails.title.replace(/[&/\#,+()$~%.|'":*?<>{}]/g, "") +
             ".mp4"
         )
@@ -88,9 +95,10 @@ async function configDL() {
 
     audio.pipe(
       fs.createWriteStream(
-        path.resolve(
-          __dirname,
-          "../audio/",
+        path.join(
+          homedir,
+          "Documents",
+          "MADownloads",
           info.videoDetails.title.replace(/[&/\#,+()$~%.|'":*?<>{}]/g, "") +
             ".mp3"
         )
@@ -161,7 +169,7 @@ function createPopup(title, text, time) {
 
 // open folder with audio files in explorer
 function openFolder() {
-  var folder = path.resolve(__dirname, "../audio/");
+  var folder = path.join(homedir, "Documents", "MADownloads");
   require("child_process").exec(`start "" ${folder}`);
 }
 
